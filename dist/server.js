@@ -25,6 +25,8 @@ const start = () => __awaiter(void 0, void 0, void 0, function* () {
     try {
         yield app.listen({
             port: process.env.PORT ? Number(process.env.PORT) : 3333
+        }, () => {
+            console.log("Server rodando");
         });
     }
     catch (error) {

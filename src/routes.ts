@@ -9,6 +9,10 @@ export async function routes(fastify: FastifyInstance, options: FastifyPluginOpt
         return {ok: true}
     })
 
+    fastify.post("/", async (request: FastifyRequest, reply: FastifyReply) => {
+        return reply.status(200).send({message: "Teste situação raiz site"})
+    })
+
     fastify.post("/product", async (request: FastifyRequest, reply: FastifyReply) => {
         return new CreateProductController().handle(request, reply)
     })

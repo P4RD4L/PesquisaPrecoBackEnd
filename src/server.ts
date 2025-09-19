@@ -14,11 +14,13 @@ const start = async () => {
 
     try {
         await app.listen({
-            port: process.env.PORT ? Number(process.env.PORT) : 3333})
+            port: process.env.PORT ? Number(process.env.PORT) : 3333},
+        () => {
+            console.log("Server rodando");
+        })
     } catch (error) {
         process.exit(1);
     }
-    
 }
 
 start();

@@ -18,6 +18,9 @@ function routes(fastify, options) {
         fastify.get("/teste", (request, reply) => __awaiter(this, void 0, void 0, function* () {
             return { ok: true };
         }));
+        fastify.post("/", (request, reply) => __awaiter(this, void 0, void 0, function* () {
+            return reply.status(200).send({ message: "Teste situação raiz site" });
+        }));
         fastify.post("/product", (request, reply) => __awaiter(this, void 0, void 0, function* () {
             return new CreateProductController_1.CreateProductController().handle(request, reply);
         }));
