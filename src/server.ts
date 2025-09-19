@@ -13,7 +13,9 @@ const start = async () => {
     await app.register(routes);
 
     try {
-        await app.listen({port: 3333})
+        await app.listen({port: 3333}, () => {
+            console.log("Server is running");
+        })
     } catch (error) {
         process.exit(1);
     }
