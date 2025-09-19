@@ -23,7 +23,9 @@ const start = () => __awaiter(void 0, void 0, void 0, function* () {
     yield app.register(cors_1.default);
     yield app.register(routes_1.routes);
     try {
-        yield app.listen({ port: 3333 });
+        yield app.listen({
+            port: process.env.PORT ? Number(process.env.PORT) : 3333
+        });
     }
     catch (error) {
         process.exit(1);
