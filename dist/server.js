@@ -16,6 +16,7 @@ const fastify_1 = __importDefault(require("fastify"));
 const cors_1 = __importDefault(require("@fastify/cors"));
 const routes_1 = require("./routes");
 const app = (0, fastify_1.default)({ logger: true });
+const PORT = 3333;
 app.setErrorHandler((error, request, reply) => {
     reply.code(400).send({ message: error.message });
 });
@@ -24,7 +25,7 @@ const start = () => __awaiter(void 0, void 0, void 0, function* () {
     yield app.register(routes_1.routes);
     try {
         yield app.listen({
-            port: process.env.PORT ? Number(process.env.PORT) : 3333
+            port: process.env.PORT ? Number(process.env.PORT) : PORT
         }, () => {
             console.log("Server rodando");
         });

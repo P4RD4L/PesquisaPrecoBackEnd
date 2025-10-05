@@ -14,10 +14,11 @@ const CreateProductService_1 = require("../service/CreateProductService");
 class CreateProductController {
     handle(request, reply) {
         return __awaiter(this, void 0, void 0, function* () {
-            const { productName, market, price } = request.body;
+            const { productName, brand, weight } = request.body;
             const productService = new CreateProductService_1.CreateProductService();
-            const products = yield productService.execute({ productName, market, price });
+            const products = yield productService.execute({ productName, brand, weight });
             reply.send(products);
+            console.log(products);
         });
     }
 }

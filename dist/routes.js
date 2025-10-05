@@ -9,10 +9,13 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.routes = void 0;
+exports.routes = routes;
 const CreateProductController_1 = require("./controller/CreateProductController");
 const ListProductController_1 = require("./controller/ListProductController");
 const DeleteProductController_1 = require("./controller/DeleteProductController");
+const CreatePriceController_1 = require("./controller/CreatePriceController");
+const ListPriceController_1 = require("./controller/ListPriceController");
+const ListController_1 = require("./controller/ListController");
 function routes(fastify, options) {
     return __awaiter(this, void 0, void 0, function* () {
         fastify.get("/teste", (request, reply) => __awaiter(this, void 0, void 0, function* () {
@@ -30,6 +33,14 @@ function routes(fastify, options) {
         fastify.delete("/product", (request, reply) => __awaiter(this, void 0, void 0, function* () {
             return new DeleteProductController_1.DeleteProductController().handle(request, reply);
         }));
+        fastify.post("/price", (request, reply) => __awaiter(this, void 0, void 0, function* () {
+            return new CreatePriceController_1.CreatePriceController().handle(request, reply);
+        }));
+        fastify.get("/prices", (request, reply) => __awaiter(this, void 0, void 0, function* () {
+            return new ListPriceController_1.ListPriceController().handle(request, reply);
+        }));
+        fastify.get("/produtos", (request, reply) => __awaiter(this, void 0, void 0, function* () {
+            return new ListController_1.ListController().handle(fastify, request, reply);
+        }));
     });
 }
-exports.routes = routes;

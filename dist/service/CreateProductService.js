@@ -16,18 +16,18 @@ exports.CreateProductService = void 0;
 const prisma_1 = __importDefault(require("../prisma"));
 class CreateProductService {
     execute(_a) {
-        return __awaiter(this, arguments, void 0, function* ({ productName, market, price }) {
-            console.log("ROTA FOI CHAMADA");
-            if (!productName || !price) {
+        return __awaiter(this, arguments, void 0, function* ({ productName, brand, weight }) {
+            console.log("ROTA CREATE PRODUCT FOI CHAMADA");
+            if (!productName || !brand) {
                 throw new Error("Preencha todos os campos");
             }
             const product = yield prisma_1.default.product.create({
                 data: {
                     productName,
-                    market,
-                    price,
-                    status: true
-                }
+                    brand,
+                    weight,
+                    status: true,
+                },
             });
             return product;
         });

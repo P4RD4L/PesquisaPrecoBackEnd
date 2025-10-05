@@ -1,26 +1,26 @@
 import prismaClient from "../prisma";
 
-interface CreateProductProps{
+interface CreateProductProps {
     productName: string;
-    market: string;
-    price: string;
+    brand: string;
+    weight: number;
 }
 
-class CreateProductService{
-    async execute({productName, market, price}: CreateProductProps){
-        console.log("ROTA FOI CHAMADA");
-        if(!productName || !price){
-            throw new Error("Preencha todos os campos");
+class CreateProductService {
+    async execute({ productName, brand, weight }: CreateProductProps) {
+        console.log("ROTA CREATE PRODUCT FOI CHAMADA");
+        if (!productName || !brand) {
+            throw new Error("Preencha todos os campos")
         }
         const product = await prismaClient.product.create({
-            data:{
+            data: {
                 productName,
-                market,
-                price,
-                status: true
-            }
+                brand,
+                weight,
+                status: true,
+            },
         })
-        return product;
+        return product
     }
 }
 

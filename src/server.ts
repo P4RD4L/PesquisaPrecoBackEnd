@@ -2,10 +2,11 @@ import Fastify from 'fastify';
 import cors from '@fastify/cors';
 import { routes } from './routes';
 
-const app = Fastify({logger: true});
+const app = Fastify({ logger: true });
+const PORT = 3333;
 
 app.setErrorHandler((error, request, reply) => {
-    reply.code(400).send({ message: error.message})
+    reply.code(400).send({ message: error.message })
 });
 
 const start = async () => {
@@ -14,10 +15,11 @@ const start = async () => {
 
     try {
         await app.listen({
-            port: process.env.PORT ? Number(process.env.PORT) : 3333},
-        () => {
-            console.log("Server rodando");
-        })
+            port: process.env.PORT ? Number(process.env.PORT) : PORT
+        },
+            () => {
+                console.log("Server rodando");
+            })
     } catch (error) {
         process.exit(1);
     }
