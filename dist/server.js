@@ -1,13 +1,4 @@
 "use strict";
-var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
-    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
-    return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments || [])).next());
-    });
-};
 var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
@@ -20,11 +11,11 @@ const PORT = 3333;
 app.setErrorHandler((error, request, reply) => {
     reply.code(400).send({ message: error.message });
 });
-const start = () => __awaiter(void 0, void 0, void 0, function* () {
-    yield app.register(cors_1.default);
-    yield app.register(routes_1.routes);
+const start = async () => {
+    await app.register(cors_1.default);
+    await app.register(routes_1.routes);
     try {
-        yield app.listen({
+        await app.listen({
             port: process.env.PORT ? Number(process.env.PORT) : PORT
         }, () => {
             console.log("Server rodando");
@@ -33,5 +24,5 @@ const start = () => __awaiter(void 0, void 0, void 0, function* () {
     catch (error) {
         process.exit(1);
     }
-});
+};
 start();
