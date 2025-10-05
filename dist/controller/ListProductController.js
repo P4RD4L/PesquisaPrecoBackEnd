@@ -17,7 +17,7 @@ class ListProductController {
             const listProductService = new ListProductService_1.ListProductService();
             const products = yield listProductService.execute();
             reply.send(products);
-            console.log(products);
+            //console.log(products);
         });
     }
 }
