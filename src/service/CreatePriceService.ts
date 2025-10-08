@@ -40,6 +40,10 @@ class CreatePriceService {
                 productRelation: {
                     connect: {
                         productName: productName,
+                    }
+                },
+                brandRelation: {
+                    connect: {
                         brand: brand
                     }
                 }
